@@ -30,8 +30,10 @@ import VisaStamp from "./assets/stamp.svg";
 import DesktopModal from "./Components/DesktopModal";
 import DialogVerify from "./Components/MyModal";
 import { useNavigate } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
 gsap.registerPlugin(ScrollTrigger);
 function App() {
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 678px)" });
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [swiperRefs, setSwiperRefs] = useState<any>();
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -287,15 +289,16 @@ function App() {
             onSlideChange={(e) => {
               setCurrentSlide(e.activeIndex);
             }}
-            // autoplay={
-            //   !shouldAutoPlay
-            //     ? shouldAutoPlay
-            //     : {
-            //         delay: 3500,
-            //         disableOnInteraction: false,
-            //       }
-            // }
-            modules={[Navigation]}
+            navigation={isTabletOrMobile ? false : true}
+            autoplay={
+              !shouldAutoPlay
+                ? shouldAutoPlay
+                : {
+                    delay: 3500,
+                    disableOnInteraction: false,
+                  }
+            }
+            modules={[Navigation, Autoplay]}
             className="animate-swiper"
             grabCursor
             ref={swiperRef}
@@ -512,6 +515,7 @@ function App() {
           </h2>
         </section>
         <DialogVerify />
+        <DesktopModal />
         <Button
           onClick={() => {
             navigate("congrats", {

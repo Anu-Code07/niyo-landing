@@ -44,6 +44,7 @@ export default function DialogVerify() {
               value={mobOtp}
               onChange={setMobOtp}
               numInputs={6}
+              inputType="number"
               renderInput={(props) => <input {...props} />}
               inputStyle={{
                 width: "30px",
