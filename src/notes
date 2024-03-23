@@ -1,0 +1,59 @@
+let cursor = document.querySelector('.cursor');
+let cursorScale = document.querySelectorAll('.cursor-scale'); 
+let mouseX = 0;
+let mouseY = 0;
+
+gsap.to({}, 0.016, {
+  repeat: -1,
+  onRepeat: function(){
+    gsap.set(cursor, {
+      css: {
+        left: mouseX,
+        top: mouseY,
+      }
+    })
+  }
+});
+
+window.addEventListener('mousemove', (e)=> {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+})
+
+cursorScale.forEach(link => {
+  link.addEventListener('mousemove', ()=> {
+    cursor.classList.add('grow'); 
+    if (link.classList.contains('small')){
+      cursor.classList.remove('grow');
+      cursor.classList.add('grow-small');
+    }
+  });
+  
+  link.addEventListener('mouseleave', ()=> {
+    cursor.classList.remove('grow');
+    cursor.classList.remove('grow-small');
+  });
+})
+
+<SwiperSlide>
+<div className="cars-text-heading">
+  <h1>Your ticket to Currrent-cy</h1>
+  <p>Redefine convenience with Niyo</p>
+</div>
+<div className="swiper-image-container lg:h-[320px] lg:w-[300px] lg:aspect-square">
+  <img src={BothCard} alt="" className="h-full w-full" />
+</div>
+<div className="swiper-text-footer">
+  <p>Unleash the boundless power of our</p>
+  <h1>Niyo Debit Card</h1>
+</div>
+</SwiperSlide>
+
+.globe1{
+    top: 0;
+    z-index: -1;
+    right: 18%;
+    scale: 0.8;}
+
+    top: 0;
+    left: 20%;
