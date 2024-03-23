@@ -158,11 +158,11 @@ $primary: #129283;
 .globe1{
     top: 0;
     z-index: -1;
-    right: 18%;
+    right: 10%;
     scale: 0.8;
 }
 .globe2{
-    top: 5%;
+    top: 10%;
     left: 20%;
 }
 .plane{
@@ -176,10 +176,12 @@ $primary: #129283;
 }
 .stamp1,.stamp2{
     position: absolute;
+    z-index: -1;
+    width: 40%;
 }
 .stamp1{
-    top: 45%;
-    right: 3%;;
+    bottom: 5%;
+    right: 3%;
 
 }
 .stamp2{
@@ -233,84 +235,6 @@ color: #333333;
 
 // }
 }
-@media screen and (max-width: 678px) {
-    .congs-text{
-        &::after{
-            bottom: -17px;
-            left: 10px;
-            content: "";
-            height: 20px;
-            width: 90%;
-        }
-        }
-        
-       
-    .nav-dots {
-        width: 0.4rem;
-        height: 0.4rem;
-    }
-    
-    .active {
-        width: 1.2rem;
-    }
-    .stamp2{
-        top: 0;
-        left: -15%;
-    }
-    .stamp1{
-        top: 45%;
-        right: -15%;
-    }
-    .globe2 {
-        top: 6%;
-        left: -6%;
-        mix-blend-mode: color;
-        scale: 0.7;
-    }
-    .globe1 {
-        top: 0;
-        z-index: -1;
-        right: -12%;
-        scale: 0.7;
-    }
-
-}
-@media screen and (max-width:500px) {
-    .dol{
-        top: 20%;
-        left: 4%;
-    }
-    .e{
-        right: 18%;
-        top: 42%
-    }
-    
-    .yen{
-        top: 12%;
-        right: 15%;
-    }
-    .wc{
-        left: 20%;
-        top: 45%;
-    }
-    
-    .euro{
-    bottom: 10%;
-    left: 20%;
-    }
-    .rs{
-        bottom: 20%;
-        right: 12%;
-    } 
-}
-.swiper-button-prev{
-    color: #129283 !important;
-}
-.swiper-button-next{
-    color: #129283 !important; 
-}
-
-
 .dol,.e,.yen,.wc,.euro,.rs{
     position: absolute;
 }
@@ -340,3 +264,91 @@ left: 20%;
     bottom: 15%;
     right: 12%;
 }
+@media screen and (max-width: 678px) {
+    .congs-text{
+        &::after{
+            bottom: -17px;
+            left: 10px;
+            content: "";
+            height: 20px;
+            width: 90%;
+        }
+        }
+        
+       
+    .nav-dots {
+        width: 0.4rem;
+        height: 0.4rem;
+    }
+    
+    .active {
+        width: 1.2rem;
+    }
+    .stamp2{
+        top: 10%;
+        left: -8%;
+        z-index: -1;
+    }
+    .stamp1{
+        bottom: 15%;
+        right: -8%;
+        z-index: -1;
+    }
+    .globe2 {
+        top: 6%;
+        left: -6%;
+        mix-blend-mode: color;
+        scale: 0.7;
+    }
+    .globe1 {
+        top: -5%;
+        z-index: -1;
+        right: -12%;
+        scale: 0.7;
+    }
+    .rocket1{
+        bottom: 0;
+        right: -15%;
+        height: 170px;
+    }
+    .rocket2{
+        left: -10%;
+        top: 0;
+        height: 120px;
+    }
+    .dol{
+        top: 20%;
+        left: 4%;
+    }
+    .e{
+        right: 8%;
+        top: 42%
+    }
+    
+    .yen{
+        top: 19%;
+        right: 8%;
+    }
+    .wc{
+        left: 8%;
+        top: 45%;
+    }
+    
+    .euro{
+    bottom: 20%;
+    left: 10%;
+    }
+    .rs{
+        bottom: 20%;
+        right: 12%;
+    }
+}
+
+.swiper-button-prev{
+    color: #129283 !important;
+}
+.swiper-button-next{
+    color: #129283 !important; 
+}
+
+

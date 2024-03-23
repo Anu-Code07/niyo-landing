@@ -406,15 +406,11 @@ function App() {
               </div>
               <div className="swiper-image-container lg:h-[390px] lg:w-[400px] md:h-[380px] md:w-[360px] lg:aspect-square h-[220px] w-[220px]">
                 <img src={BothCard} alt="" className="h-full w-full anim-img" />
+                <img src={VisaStamp} alt="" className="stamp1 ani-stamp " />
                 <img
                   src={VisaStamp}
                   alt=""
-                  className="globe1 stamp1 ani-stamp w-[180px] h-[180px]"
-                />
-                <img
-                  src={VisaStamp}
-                  alt=""
-                  className="globe1  lg:block stamp2 ani-stamp w-[180px] h-[180px] lg:h-full lg:-full"
+                  className="lg:block stamp2 ani-stamp "
                 />
               </div>
               <div className="swiper-text-footer">
@@ -442,16 +438,8 @@ function App() {
               </div>
               <div className="swiper-image-container lg:h-[390px] lg:w-[400px] md:h-[380px] md:w-[360px] lg:aspect-square h-[220px] w-[220px]">
                 <img src={BothCard} alt="" className="h-full w-full" />
-                <img
-                  src={Globe1}
-                  alt=""
-                  className="globe1 hidden lg:block rot-i"
-                />
-                <img
-                  src={Globe2}
-                  alt=""
-                  className="globe2 hidden lg:block rot-i"
-                />
+                <img src={Globe1} alt="" className="globe1  rot-i" />
+                <img src={Globe2} alt="" className="globe2 rot-i" />
                 <img src="" alt="" />
               </div>
               <div className="swiper-text-footer">
@@ -478,16 +466,8 @@ function App() {
               </div>
               <div className="swiper-image-container lg:h-[390px] lg:w-[400px] md:h-[380px] md:w-[360px] lg:aspect-square h-[220px] w-[220px]">
                 <img src={BothCard} alt="" className="h-full w-full" />
-                <img
-                  src={Rocket1}
-                  alt=""
-                  className="rocket1 hidden lg:block rock-i"
-                />
-                <img
-                  src={Rocket2}
-                  alt=""
-                  className="rocket2 hidden lg:block rock-i"
-                />
+                <img src={Rocket1} alt="" className="rocket1  rock-i" />
+                <img src={Rocket2} alt="" className="rocket2  rock-i" />
               </div>
               <div className="swiper-text-footer">
                 <p className="text-sm text-[#797979] lg:text-xl">
