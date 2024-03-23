@@ -29,11 +29,13 @@ import Ruppe from "./assets/ruppe.png";
 import VisaStamp from "./assets/stamp.svg";
 import DesktopModal from "./Components/DesktopModal";
 import DialogVerify from "./Components/MyModal";
+import { useNavigate } from "react-router-dom";
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [swiperRefs, setSwiperRefs] = useState<any>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const navigate = useNavigate();
   const swiperRef = useRef<any>();
   function onMouseHover() {
     gsap.set(".cursor", {
@@ -530,6 +532,15 @@ function App() {
           </h2>
         </section>
         <DialogVerify />
+        <Button
+          onClick={() => {
+            navigate("congrats", {
+              replace: true,
+            });
+          }}
+        >
+          Conmg
+        </Button>
       </main>
     </div>
   );
