@@ -41,31 +41,6 @@ function App() {
   const swiperRef = useRef<any>();
 
   useGSAP(() => {
-    let cursor = document.querySelector(".cursor");
-    let cursorScale = document.querySelectorAll(".cursor-scale");
-
-    cursorScale.forEach((link) => {
-      link.addEventListener("mousemove", () => {
-        cursor?.classList.add("grow");
-        if (link.classList.contains("small")) {
-          cursor?.classList.remove("grow");
-          cursor?.classList.add("grow-small");
-        }
-      });
-
-      link.addEventListener("mouseleave", () => {
-        cursor?.classList.remove("grow");
-        cursor?.classList.remove("grow-small");
-      });
-    });
-    window.addEventListener("mousemove", (e) => {
-      gsap.to(".cursor", {
-        x: e.clientX,
-        y: e.clientY,
-        scale: 1,
-      });
-    });
-
     const homeTl = gsap.timeline({
       defaults: {
         duration: 0.8,
@@ -92,12 +67,13 @@ function App() {
       });
 
     const swiperTl = gsap.timeline({
-      defaults: {},
+      defaults: {
+        duration: 0.5,
+      },
       scrollTrigger: {
         start: "center center",
         trigger: "#banner_page",
         end: "bottom 20%",
-        markers: true,
       },
     });
 
@@ -278,15 +254,15 @@ function App() {
               setCurrentSlide(e.activeIndex);
             }}
             navigation={isTabletOrMobile ? false : true}
-            // autoplay={
-            //   !shouldAutoPlay
-            //     ? shouldAutoPlay
-            //     : {
-            //         delay: 3500,
-            //         disableOnInteraction: false,
-            //       }
-            // }
-            modules={[Navigation]}
+            autoplay={
+              !shouldAutoPlay
+                ? shouldAutoPlay
+                : {
+                    delay: 5500,
+                    disableOnInteraction: false,
+                  }
+            }
+            modules={[Navigation, Autoplay]}
             className="animate-swiper"
             grabCursor
             ref={swiperRef}
