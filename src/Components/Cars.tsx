@@ -1,6 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import {
+  Autoplay,
+  Pagination,
+  Navigation,
+  EffectCoverflow,
+} from "swiper/modules";
 import BothCard from "../assets/bothcards.png";
 
 import "swiper/css";
@@ -12,153 +17,55 @@ const Carousle = ({}) => {
   const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div
-      style={{
-        borderRadius: "10px",
-        margin: "3rem 0",
-        width: "100%",
-        textAlign: "center",
-        display: "none",
-      }}
-    >
+    <div>
       <Swiper
-        spaceBetween={100}
-        slidesPerView={1}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
+        effect={"coverflow"}
+        grabCursor={true}
+        centeredSlides={true}
+        centeredSlidesBounds={true}
+        loop={true}
+        initialSlide={2}
+        slidesPerView={"auto"}
+        coverflowEffect={{
+          rotate: 0,
+          stretch: 0,
+          depth: 100,
+          modifier: 2.5,
         }}
-        onSlideChange={(e) => {
-          console.log(e.activeIndex);
-          setCurrentSlide(e.activeIndex);
-        }}
-        pagination={{
-          clickable: true,
-        }}
-        navigation
-        modules={[Autoplay, Navigation]}
-        onSwiper={(swiper) => console.log(swiper)}
+        modules={[EffectCoverflow]}
+        className="swiper_container"
         style={{
           display: "flex",
           justifyContent: "center",
         }}
-        id="swiperS"
-        ref={swiperRef}
       >
-        <SwiperSlide
-          style={{
-            position: "relative",
-          }}
-        >
-          <div className="plane-img" style={{}}></div>
-          <div className="cards-heading">
-            <div className="heading-text-container">
-              <h1>Your ticket to Currrent-cy</h1>
-              <p>Redefine convenience with Niyo</p>
-            </div>
-          </div>
-          <div className="dc-image-swiper">
-            <img src={BothCard} alt="" />
-          </div>
-          <div className="cards-footer">
-            <div className="footer-text-container">
-              <p>Unleash the boundless power of our</p>
-              <h1>Niyo Debit Card</h1>
-            </div>
-          </div>
-        </SwiperSlide>
         <SwiperSlide>
-          <div className="cards-heading">
-            <div className="heading-text-container">
-              <h1>Travel Agents</h1>
-              <p>Redefine convenience with Niyo</p>
-            </div>
-          </div>
-          <div className="dc-image-swiper">
-            <img src={BothCard} alt="" />
-          </div>
-          <div className="cards-footer">
-            <div className="footer-text-container">
-              <p>
-                Streamline and optimise your bookings for flights, hotels, and
-                experiences with cost-effective international transactions.
+          <div className="bg-[#F4F4F4] p-2 rounded-xl h-[158px] w-[250px] lg:h-[200px] lg:w-[307px] shadow-lg">
+            <div className="box text-center h-full">
+              <h1 className="text-xl font-semibold mb-4 mt-2 lg:text-2xl">
+                What’s Next?
+              </h1>
+              <p className="text-sm text-[#0D0D0D] lg:text-[16px]">
+                Be the first to experience seamless transactions and innovative
+                solutions. We'll reach out when our product is ready.
               </p>
             </div>
           </div>
         </SwiperSlide>
         <SwiperSlide>
-          <div className="cards-heading">
-            <div className="heading-text-container">
-              <h1>VISA Consultants</h1>
-              <p>Redefine convenience with Niyo</p>
-            </div>
-          </div>
-          <div className="dc-image-swiper">
-            <img src={BothCard} alt="" />
-          </div>
-          <div className="cards-footer">
-            <div className="footer-text-container">
-              <p>
-                Simplify and enhance the payment experiences for your clients,
-                ensuring seamless global transactions.
-              </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="cards-heading">
-            <div className="heading-text-container">
-              <h1>Education Consultant</h1>
-              <p className="small-zig-zag">Redefine convenience with Niyo</p>
-            </div>
-          </div>
-          <div className="dc-image-swiper">
-            <img src={BothCard} alt="" />
-          </div>
-          <div className="cards-footer">
-            <div className="footer-text-container">
-              <p>
-                Facilitate smooth and efficient global education fee payments
-                for your clients.
-              </p>
-            </div>
-          </div>
-        </SwiperSlide>
-        <SwiperSlide>
-          <div className="cards-heading">
-            <div className="heading-text-container">
-              <h1>Businesses</h1>
-              <p>Redefine convenience with Niyo</p>
-            </div>
-          </div>
-          <div className="dc-image-swiper">
-            <img src={BothCard} alt="" />
-          </div>
-          <div className="cards-footer">
-            <div className="footer-text-container">
-              <p>
-                Facilitate smooth and efficient global education fee payments
-                for your clients.
+          <div className="bg-[#F4F4F4] p-2 rounded-xl h-[158px] w-[250px] lg:h-[200px] lg:w-[307px] shadow-lg">
+            <div className="box text-center h-full">
+              <h1 className="text-xl font-semibold mb-4 mt-2 lg:text-2xl">
+                What’s Next2?
+              </h1>
+              <p className="text-sm text-[#0D0D0D] lg:text-[16px]">
+                Be the first to experience seamless transactions and innovative
+                solutions. We'll reach out when our product is ready.
               </p>
             </div>
           </div>
         </SwiperSlide>
       </Swiper>
-
-      <button className="button-homepage modify">Register Now</button>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          marginTop: "10px",
-        }}
-      >
-        <p className={`nav-dots ${currentSlide == 0 ? "active" : ""}`}></p>
-        <p className={`nav-dots ${currentSlide == 1 ? "active" : ""}`}></p>
-        <p className={`nav-dots ${currentSlide == 2 ? "active" : ""}`}></p>
-        <p className={`nav-dots ${currentSlide == 3 ? "active" : ""}`}></p>
-        <p className={`nav-dots ${currentSlide == 4 ? "active" : ""}`}></p>
-      </div>
     </div>
   );
 };
