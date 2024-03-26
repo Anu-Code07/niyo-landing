@@ -8,18 +8,28 @@ import {
 } from "@material-tailwind/react";
 import OtpInput from "react-otp-input";
 import CheckImg from "../assets/check.png";
+import toast, { Toaster } from "react-hot-toast";
 export default function DialogDesktopVerify() {
   const [open, setOpen] = React.useState(false);
   const [size, setSize] = React.useState(null);
   const handleOpen = () => setOpen(!open);
   const [emailOtp, setEmailOtp] = useState("");
   const [mobOtp, setMobOtp] = useState("");
+  const notify = () => toast.error("Here is your toast.");
   return (
     <>
-      <Button onClick={handleOpen} variant="gradient">
-        Desktop Dialog
+      <Button
+        onClick={handleOpen}
+        className="bg-[#129283] text-white lg:p-4 lg:text-md"
+      >
+        Join Our List
       </Button>
       <Dialog open={open} handler={handleOpen} size={"md"}>
+        <Toaster
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
         <DialogHeader>
           <h3 className="text-sm lg:text-xl font-semibold">
             Check your mobile and inbox. We’ve sent your OTP!{" "}
@@ -29,24 +39,21 @@ export default function DialogDesktopVerify() {
           <div className="verify-mobile">
             <div className="verify-heading flex gap-4 items-center pr-1">
               <div className="">
-                <p className="text-xs font-semibold ">
+                <p className="text-md font-semibold text-[#0D0D0D]">
                   Verify Mobile - 8892823988
                 </p>
-                <button className="text-sm text-[#3C8EEE]">Edit</button>
               </div>
-
-              {mobOtp?.length == 6 && (
-                <img src={CheckImg} width={"20px"} height={"20px"} />
-              )}
+              <button className="text-md text-[#3C8EEE]">Edit</button>
             </div>
             <OtpInput
               value={mobOtp}
               onChange={setMobOtp}
               numInputs={6}
+              inputType="number"
               renderInput={(props) => <input {...props} />}
               inputStyle={{
-                width: "50px",
-                height: "50px",
+                width: "40px",
+                height: "40px",
                 margin: "5px",
                 border: "1px solid #ccc",
                 borderRadius: "0.3rem",
@@ -59,17 +66,13 @@ export default function DialogDesktopVerify() {
             </div>
           </div>
           <div className="verify-email mt-1">
-            <div className="verify-heading flex justify-between items-center pr-1">
+            <div className="verify-heading flex gap-4 items-center pr-1">
               <div>
-                <p className="text-xs font-semibold ">
+                <p className="text-md font-semibold text-[#0D0D0D] ">
                   Verify Email - anurag.kr.singh07@gmail.com
                 </p>
-                <button className="text-md text-[#3C8EEE]">Edit</button>
               </div>
-
-              {emailOtp?.length == 6 && (
-                <img src={CheckImg} width={"20px"} height={"20px"} />
-              )}
+              <button className="text-md text-[#3C8EEE]">Edit</button>
             </div>
             <OtpInput
               onChange={setEmailOtp}
@@ -77,7 +80,7 @@ export default function DialogDesktopVerify() {
               numInputs={6}
               renderInput={(props) => <input {...props} />}
               inputStyle={{
-                width: "30px",
+                width: "40px",
                 height: "40px",
                 margin: "5px",
                 border: "1px solid #ccc",
@@ -86,7 +89,7 @@ export default function DialogDesktopVerify() {
                 fontWeight: "bold",
               }}
             />
-            <div className="resend flex justify-end mt-2">
+            <div className="resend flex  mt-2">
               <button className="text-xs">Resend OTP</button>
             </div>
           </div>

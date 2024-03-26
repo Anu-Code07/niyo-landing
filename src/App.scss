@@ -145,15 +145,21 @@ $primary: #129283;
     position: absolute;
 }
 .rocket1{
-    bottom: 0;
+    bottom: 10%;
     right: 10%;
+    opacity: 35%;
+    transform: rotate(-15deg);
 }
 .rocket2{
     left: 10%;
-    top: 0;
+    bottom: 10%;
+    opacity: 35%;
+    transform: rotate(-62deg);
 }
 .globe1,.globe2{
     position: absolute;
+    z-index: -1;
+    opacity: 35%;
 }
 .globe1{
     top: 0;
@@ -164,6 +170,7 @@ $primary: #129283;
 .globe2{
     top: 10%;
     left: 20%;
+    height: 120px;
 }
 .plane{
     position: absolute;
@@ -301,20 +308,26 @@ left: 20%;
         scale: 0.7;
     }
     .globe1 {
-        top: -5%;
+        top: 0%;
         z-index: -1;
-        right: -12%;
+        right: -22%;
         scale: 0.7;
     }
     .rocket1{
-        bottom: 0;
-        right: -15%;
-        height: 170px;
+        height: 120px;
+        opacity: 35%;
+        transform: rotate(-9deg);
+        height: 120px;
+        opacity: 35%;
+         transform: rotate(-9deg);
+         bottom: 20%;
+         right: -8%;
     }
     .rocket2{
-        left: -10%;
-        top: 0;
+        left: -8%;
+        bottom: 30%;
         height: 120px;
+        transform: rotate(-60deg);
     }
     .dol{
         top: 20%;
@@ -352,3 +365,79 @@ left: 20%;
 }
 
 
+
+
+
+
+
+.loader {
+    width: 48px;
+    height: 48px;
+    margin: auto;
+    position: relative;
+  }
+  
+  .loader:before {
+    content: '';
+    width: 48px;
+    height: 5px;
+    background: #00000057;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    border-radius: 50%;
+    animation: shadow 0.5s linear infinite;
+    opacity: 1;
+  }
+  
+  .loader:after {
+    content: '';
+    width: 100%;
+    height: 100%;
+    background: #129283;
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    animation: jump 0.5s linear infinite;
+  }
+  
+  @keyframes jump {
+    15% {
+      border-bottom-right-radius: 3px;
+    }
+  
+    25% {
+      transform: translateY(9px) rotate(22.5deg);
+    }
+  
+    50% {
+      transform: translateY(18px) scale(1, .9) rotate(45deg);
+      border-bottom-right-radius: 40px;
+    }
+  
+    75% {
+      transform: translateY(9px) rotate(67.5deg);
+    }
+  
+    100% {
+      transform: translateY(0) rotate(90deg);
+    }
+  }
+  
+  @keyframes shadow {
+    0%,
+      100% {
+      transform: scale(1, 1);
+    }
+  
+    50% {
+      transform: scale(1.2, 1);
+    }
+  }
+
+  input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}

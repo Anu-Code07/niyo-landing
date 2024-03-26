@@ -8,6 +8,7 @@ import Logo from "./assets/logo.png";
 import ScrollTrigger from "gsap/ScrollTrigger";
 import CardFront from "./assets/card-front.png";
 import CardBack from "./assets/card-back.png";
+
 import { Button } from "@material-tailwind/react";
 import BothCard from "./assets/bothcards.png";
 import LeadForm from "./Components/LeadForm";
@@ -15,10 +16,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import { Autoplay, Pagination, Navigation } from "swiper/modules";
-import Globe1 from "./assets/globe 1.png";
-import Globe2 from "./assets/globe 2.png";
-import Rocket1 from "./assets/rocket 2.png";
-import Rocket2 from "./assets/rocket 3.png";
+import GlobeF from "./assets/earthfinal.gif";
 import Plane from "./assets/plane (1).png";
 import Dollar from "./assets/dol.png";
 import E from "./assets/e.png";
@@ -31,6 +29,8 @@ import DesktopModal from "./Components/DesktopModal";
 import DialogVerify from "./Components/MyModal";
 import { useNavigate } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
+import rocketgif from "./assets/rocketrot.gif";
+import Loader from "./Components/Loader";
 gsap.registerPlugin(ScrollTrigger);
 function App() {
   const isTabletOrMobile = useMediaQuery({ query: "(max-width: 678px)" });
@@ -39,17 +39,7 @@ function App() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const navigate = useNavigate();
   const swiperRef = useRef<any>();
-  function onMouseHover() {
-    gsap.set(".cursor", {
-      scale: 4,
-    });
-  }
-  function onMouseHoverOut() {
-    debugger;
-    gsap.set(".cursor", {
-      scale: 1,
-    });
-  }
+
   useGSAP(() => {
     let cursor = document.querySelector(".cursor");
     let cursorScale = document.querySelectorAll(".cursor-scale");
@@ -102,13 +92,12 @@ function App() {
       });
 
     const swiperTl = gsap.timeline({
-      defaults: {
-        duration: 0.7,
-      },
+      defaults: {},
       scrollTrigger: {
         start: "center center",
         trigger: "#banner_page",
         end: "bottom 20%",
+        markers: true,
       },
     });
 
@@ -119,10 +108,6 @@ function App() {
       })
       .from(".anim-img", {
         scale: 0.8,
-      })
-      .to(".animate-swiper", {
-        opacity: 1,
-        x: 0,
       })
       .from(".anim-text", {
         opacity: 0,
@@ -136,6 +121,11 @@ function App() {
         },
         "-=0.5"
       )
+      .to(".animate-swiper", {
+        opacity: 1,
+        x: 0,
+      })
+
       .to(
         ".anim-img",
         {
@@ -226,13 +216,12 @@ function App() {
       swiperRefs?.autoplay?.start();
     }
   }, [shouldAutoPlay]);
+
   return (
     <div className="debug-screens">
-      {!isMobile && <div className="cursor"></div>}
-      <nav className="bg-white h-[6vh] shadow-sm md:h-[8vh] md:p-4 md:shadow-md lg:h-[8vh] lg:p-4  lg:shadow-md p-2">
+      <nav className="bg-white h-[6vh] shadow-sm md:h-[8vh] md:p-4 md:shadow-md lg:h-[8vh] lg:p-4 lg:shadow-md p-2">
         <img src={Logo} alt="" className="" />
       </nav>
-
       <main className="w-screen overflow-x-hidden">
         <section
           id="banner_page"
@@ -241,7 +230,6 @@ function App() {
           p-5
           lg:p-20
           md:p-10 text-[#262525]
-        
           "
         >
           <div className="overlay-image">
@@ -290,15 +278,15 @@ function App() {
               setCurrentSlide(e.activeIndex);
             }}
             navigation={isTabletOrMobile ? false : true}
-            autoplay={
-              !shouldAutoPlay
-                ? shouldAutoPlay
-                : {
-                    delay: 3500,
-                    disableOnInteraction: false,
-                  }
-            }
-            modules={[Navigation, Autoplay]}
+            // autoplay={
+            //   !shouldAutoPlay
+            //     ? shouldAutoPlay
+            //     : {
+            //         delay: 3500,
+            //         disableOnInteraction: false,
+            //       }
+            // }
+            modules={[Navigation]}
             className="animate-swiper"
             grabCursor
             ref={swiperRef}
@@ -441,8 +429,8 @@ function App() {
               </div>
               <div className="swiper-image-container lg:h-[390px] lg:w-[400px] md:h-[380px] md:w-[360px] lg:aspect-square h-[220px] w-[220px]">
                 <img src={BothCard} alt="" className="h-full w-full" />
-                <img src={Globe1} alt="" className="globe1  rot-i" />
-                <img src={Globe2} alt="" className="globe2 rot-i" />
+                <img src={GlobeF} alt="" className="globe1 2xl:right-[18%] " />
+                <img src={GlobeF} alt="" className="globe2 " />
                 <img src="" alt="" />
               </div>
               <div className="swiper-text-footer">
@@ -469,8 +457,8 @@ function App() {
               </div>
               <div className="swiper-image-container lg:h-[390px] lg:w-[400px] md:h-[380px] md:w-[360px] lg:aspect-square h-[220px] w-[220px]">
                 <img src={BothCard} alt="" className="h-full w-full" />
-                <img src={Rocket1} alt="" className="rocket1  rock-i" />
-                <img src={Rocket2} alt="" className="rocket2  rock-i" />
+                <img src={rocketgif} alt="" className="rocket1  rock-i" />
+                <img src={rocketgif} alt="" className="rocket2  rock-i" />
               </div>
               <div className="swiper-text-footer">
                 <p className="text-sm text-[#797979] lg:text-xl">
@@ -514,17 +502,6 @@ function App() {
             Exciting offers designed for you are on the horizon."
           </h2>
         </section>
-        <DialogVerify />
-        <DesktopModal />
-        <Button
-          onClick={() => {
-            navigate("congrats", {
-              replace: true,
-            });
-          }}
-        >
-          Conmg
-        </Button>
       </main>
     </div>
   );

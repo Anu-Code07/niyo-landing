@@ -8,7 +8,9 @@ import {
 } from "@material-tailwind/react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import MyModal from "./MyModal";
-import OtpInput from "react-otp-input";
+
+import { useMediaQuery } from "react-responsive";
+import DialogDesktopVerify from "./DesktopModal";
 const LeadForm = () => {
   const {
     handleSubmit,
@@ -20,6 +22,7 @@ const LeadForm = () => {
   });
   const onSubmit = (data: any) => console.log(data);
   const [open, setOpen] = useState(false);
+  const isTabletOrMobile = useMediaQuery({ query: "(max-width: 678px)" });
   return (
     <>
       <div className="flex justify-center p-8 w-full ">
@@ -162,12 +165,7 @@ const LeadForm = () => {
               </div>
             </div>
             <div className="text-center flex justify-center mt-4 lg:mt-12">
-              <Button
-                type="submit"
-                className="bg-[#129283] text-white lg:p-4 lg:text-md"
-              >
-                Join Our List
-              </Button>
+              {isTabletOrMobile ? <MyModal /> : <DialogDesktopVerify />}
             </div>
           </form>
 
@@ -176,7 +174,6 @@ const LeadForm = () => {
           </p>
         </Card>
       </div>
-      
     </>
   );
 };

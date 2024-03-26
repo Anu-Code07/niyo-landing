@@ -6,7 +6,7 @@ import {
   DialogBody,
   DialogFooter,
 } from "@material-tailwind/react";
-
+import toast, { Toaster } from "react-hot-toast";
 import OtpInput from "react-otp-input";
 import CheckImg from "../assets/check.png";
 export default function DialogVerify() {
@@ -15,13 +15,22 @@ export default function DialogVerify() {
   const handleOpen = () => setOpen(!open);
   const [emailOtp, setEmailOtp] = useState<any>("");
   const [mobOtp, setMobOtp] = useState("");
-
+  const notify = () => toast.error("Here is your toast.");
   return (
     <>
-      <Button onClick={handleOpen} variant="gradient">
-        Open Dialog
+      <Button
+        onClick={handleOpen}
+        className="bg-[#129283] text-white lg:p-4 lg:text-md"
+      >
+        Join Our List
       </Button>
+
       <Dialog open={open} handler={handleOpen} size={"sm"}>
+        <Toaster
+          toastOptions={{
+            duration: 3000,
+          }}
+        />
         <DialogHeader>
           <h3 className="text-sm lg:text-xl font-semibold">
             Check your mobile and inbox. We’ve sent your OTP!{" "}
@@ -29,16 +38,13 @@ export default function DialogVerify() {
         </DialogHeader>
         <DialogBody>
           <div className="verify-mobile">
-            <div className="verify-heading flex justify-between items-center p-[5px]">
+            <div className="verify-heading flex gap-1 ">
               <div className="flex gap-1 items-center">
                 <p className="text-xs font-semibold">
                   Verify Mobile - 8892823988
                 </p>
-                <button className="text-[12px] text-[#3C8EEE]">Edit</button>
               </div>
-              {mobOtp?.length == 6 && (
-                <img src={CheckImg} width={"20px"} height={"20px"} />
-              )}
+              <button className="text-[12px] text-[#3C8EEE]">Edit</button>
             </div>
             <OtpInput
               value={mobOtp}
@@ -61,22 +67,19 @@ export default function DialogVerify() {
             </div>
           </div>
           <div className="verify-email mt-1">
-            <div className="verify-heading flex justify-between items-center pr-1">
+            <div className="verify-heading flex gap-1 items-center">
               <div>
-                <p className="text-xs font-semibold ">
+                <p className="text-xs font-semibold">
                   Verify Email - anurag.kr.singh07@gmail.com
                 </p>
-                <button className="text-[12px] text-[#3C8EEE]">Edit</button>
               </div>
-
-              {emailOtp?.length == 6 && (
-                <img src={CheckImg} width={"20px"} height={"20px"} />
-              )}
+              <button className="text-[12px] text-[#3C8EEE]">Edit</button>
             </div>
             <OtpInput
               onChange={setEmailOtp}
               value={emailOtp}
               numInputs={6}
+              inputType="number"
               renderInput={(props) => <input {...props} />}
               inputStyle={{
                 width: "30px",
@@ -94,10 +97,7 @@ export default function DialogVerify() {
           </div>
         </DialogBody>
         <DialogFooter>
-          <Button
-            className="bg-[#129283] text-white mx-auto"
-            onClick={handleOpen}
-          >
+          <Button className="bg-[#129283] text-white mx-auto" onClick={notify}>
             <span>Submit</span>
           </Button>
         </DialogFooter>
