@@ -8,10 +8,9 @@ import {
 } from "@material-tailwind/react";
 import { useForm, Controller, SubmitHandler } from "react-hook-form";
 import MyModal from "./MyModal";
-
 import { useMediaQuery } from "react-responsive";
 import DialogDesktopVerify from "./DesktopModal";
-const LeadForm = () => {
+const LeadForm = ({ setShowLoader, showLoader }) => {
   const {
     handleSubmit,
     control,
@@ -32,15 +31,13 @@ const LeadForm = () => {
     const secondChar = str.charAt(1);
     return !isNaN(firstChar) && !isNaN(secondChar);
   }
-  console.log(isCharNumber("A23A"), "----");
-
   return (
     <>
       <div className="flex justify-center p-8 w-full ">
         <Card
           color="transparent"
           shadow={true}
-          className="grid place-items-center shadow-md bg-[#F4F4F4] p-4 w-full lg:p-8 lg:w-[90%]"
+          className="grid place-items-center shadow-md bg-[#F4F4F4] p-4 w-full lg:p-8 lg:w-[90%] z-1"
         >
           <Typography
             variant="h6"

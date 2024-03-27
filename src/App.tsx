@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef, useContext } from "react";
 import "./App.scss";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -37,6 +37,7 @@ function App() {
   const [shouldAutoPlay, setShouldAutoPlay] = useState(false);
   const [swiperRefs, setSwiperRefs] = useState<any>();
   const [currentSlide, setCurrentSlide] = useState(0);
+  const [showLoader, setShowLoader] = useState(false);
   const navigate = useNavigate();
   const swiperRef = useRef<any>();
 
@@ -194,7 +195,7 @@ function App() {
   }, [shouldAutoPlay]);
 
   return (
-    <div className="debug-screens">
+    <div className="relative">
       <nav className="bg-white h-[6vh] shadow-sm md:h-[8vh] md:p-4 md:shadow-md lg:h-[8vh] lg:p-4 lg:shadow-md p-2">
         <img src={Logo} alt="" className="" />
       </nav>
@@ -464,6 +465,7 @@ function App() {
           </div>
         </section>
         <section id="form_page" className=" w-screen p-2  lg:h-screen">
+          {showLoader ? <Loader /> : <></>}
           <h1 className="text-md text-center text-wrap lg:text-xl form-zig lg:mb-10 mb-5">
             Exclusively crafted benefits for
             <br />
@@ -472,13 +474,20 @@ function App() {
               Private Ltd, Partnership, LLP, & Limited Firms.
             </span>
           </h1>
-          <LeadForm />
+          <LeadForm setShowLoader={setShowLoader} showLoader={showLoader} />
           <h2 className="text-center text-md">
             " Stay tuned, <span className="font-bold">Proprietors!</span>{" "}
             Exciting offers designed for you are on the horizon."
           </h2>
         </section>
       </main>
+      <Button
+        onClick={() => {
+          navigate("congrats");
+        }}
+      >
+        Con
+      </Button>
     </div>
   );
 }

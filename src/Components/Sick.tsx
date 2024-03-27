@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.scss";
 import {
   StackedCarousel,
   ResponsiveContainer,
@@ -21,7 +22,7 @@ export const data = [
 export default function ResponsiveCarousel(props: any) {
   const ref = React.useRef();
   return (
-    <div style={{ width: "100%", position: "relative", margin: "20px 0" }}>
+    <div style={{ width: "100%", margin: "20px 0", overflow: "intial" }}>
       <ResponsiveContainer
         carouselRef={ref}
         render={(parentWidth, carouselRef) => {
@@ -30,6 +31,7 @@ export default function ResponsiveCarousel(props: any) {
           if (parentWidth <= 768) currentVisibleSlide = 3;
           return (
             <StackedCarousel
+              className="car-fix"
               ref={carouselRef}
               slideComponent={Card}
               slideWidth={parentWidth < 800 ? parentWidth - 90 : 550}
@@ -38,6 +40,9 @@ export default function ResponsiveCarousel(props: any) {
               currentVisibleSlide={currentVisibleSlide}
               maxVisibleSlide={3}
               useGrabCursor
+              transitionTime={1000}
+              fadeDistance={0}
+              swipeSpeed={0.3}
               customScales={[1.5, 0.8, 0.8]}
             />
           );
@@ -47,15 +52,9 @@ export default function ResponsiveCarousel(props: any) {
   );
 }
 
-// Very import to memoize your Slide component otherwise there might be performance issue
-// At minimum your should do a simple React.memo(SlideComponent)
-// If you want the absolute best performance then pass in a custom comparator function like below
 export const Card = React.memo(function (props: any) {
   const { data, dataIndex, isCenterSlide } = props;
   const { desc, title } = data[dataIndex];
-
-  console.log(props, "--");
-
   return (
     <div
       style={{
